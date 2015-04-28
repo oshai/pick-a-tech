@@ -1,0 +1,28 @@
+<template name="pickListTemplate">
+	<div class="row marketing">
+		<div class="col-lg-12">
+			<div>
+			<!-- 
+				<header>
+					<h1>Picks</h1>
+				</header>
+				 -->
+				<ul class="list-group">
+					{{#each picks}}
+					{{> pick}}
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</template>
+<template name="pick">
+	<li class="list-group-item">
+		<a href="/pick/{{_id}}">
+			<h4>{{title}}</h4>
+			<!-- {{content}}  -->
+		</a>
+	</li>
+</template>
+
