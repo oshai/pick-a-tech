@@ -36,6 +36,8 @@ if (Meteor.isClient) {
 			//insert to database
             Picks.insert({
                 title: title,
+                owner: Meteor.userId(),           // _id of logged in user
+                username: Meteor.user().username,  // username of logged in user
                 createdAt: new Date() // current time
             });
             // Clear form
@@ -46,6 +48,10 @@ if (Meteor.isClient) {
             // Prevent default form submit
             return false;
         }
+    });
+    
+    Accounts.ui.config({
+      passwordSignupFields: "USERNAME_ONLY"
     });
 }
 

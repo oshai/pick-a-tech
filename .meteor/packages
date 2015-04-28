@@ -10,3 +10,9 @@ insecure
 iron:router
 twbs:bootstrap
 fortawesome:fontawesome
+accounts-ui
+accounts-password
+accounts-facebook
+accounts-google
+accounts-twitter
+accounts-github

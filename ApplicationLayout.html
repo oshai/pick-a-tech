@@ -4,10 +4,13 @@
 			<nav>
 				<ul class="nav nav-pills pull-right">
 					<li role="presentation"><a href="/picks">Picks</a></li>
+					{{#if currentUser}}
 					<li role="presentation"><a href="/picks/new">New Pick</a></li>
+					{{/if}}
 				</ul>
 			</nav>
 			<h3 class="text-muted">Pick-A-Tech</h3>
+			{{> loginButtons}}
 		</div>
 		{{> yield}}
 		<footer class="footer">
