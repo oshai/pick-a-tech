@@ -1,0 +1,1 @@
+angular.module('pick-a-tech',['angular-meteor', 'ui.router']);
