@@ -13,7 +13,13 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
         url: '/labels/:labelId',
         templateUrl: 'client/labels/label-details.ng.html',
         controller: 'LabelDetailsCtrl'
-      });
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: 'client/users/users-list.ng.html',
+        controller: 'UsersListCtrl'
+      })
+      ;
 
     $urlRouterProvider.otherwise("/labels");
   }]);
