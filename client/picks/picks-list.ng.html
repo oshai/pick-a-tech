@@ -1,0 +1,15 @@
+<form>
+  <pick>Name</pick>
+  <input ng-model="newPick.name">
+  <pick>Description</pick>
+  <input ng-model="newPick.description">
+  <button ng-click="newPick.owner=$root.currentUser._id; picks.push(newPick)">Add</button>
+  <button ng-click="removeAll()">Remove All</button>
+</form>
+<ul>
+  <li ng-repeat="pick in picks">
+    <a href="/picks/{{pick._id}}">{{pick.name}}</a>
+    <p>{{pick.description}}</p>
+    <button ng-click="remove(pick)">X</button>
+  </li>
+</ul>

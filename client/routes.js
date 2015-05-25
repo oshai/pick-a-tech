@@ -14,6 +14,16 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
         templateUrl: 'client/labels/label-details.ng.html',
         controller: 'LabelDetailsCtrl'
       })
+      .state('picks', {
+    	  url: '/picks',
+    	  templateUrl: 'client/picks/picks-list.ng.html',
+    	  controller: 'PicksListCtrl'
+      })
+      .state('pickDetails', {
+    	  url: '/picks/:pickId',
+    	  templateUrl: 'client/picks/pick-details.ng.html',
+    	  controller: 'PickDetailsCtrl'
+      })
       .state('users', {
         url: '/users',
         templateUrl: 'client/users/users-list.ng.html',
@@ -21,5 +31,5 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
       })
       ;
 
-    $urlRouterProvider.otherwise("/labels");
+    $urlRouterProvider.otherwise("/picks");
   }]);
