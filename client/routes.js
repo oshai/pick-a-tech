@@ -14,6 +14,11 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
         templateUrl: 'client/labels/label-details.ng.html',
         controller: 'LabelDetailsCtrl'
       })
+      .state('newPick', {
+    	  url: '/picks/new',
+    	  templateUrl: 'client/picks/new-pick.ng.html',
+    	  controller: 'NewPickCtrl'
+      })
       .state('picks', {
     	  url: '/picks',
     	  templateUrl: 'client/picks/picks-list.ng.html',

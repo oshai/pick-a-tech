@@ -9,6 +9,6 @@ angularui:angular-ui-router
 twbs:bootstrap
 fortawesome:fontawesome
 accounts-password
-accounts-ui
 accounts-facebook
 less
+accounts-ui

@@ -1,15 +1,25 @@
 <head>
+<!-- <link rel="shortcut icon" href="/favicon.ico">  -->
+<meta name="description" content="pick-a-tech">
+<title>pick-a-tech</title>
 <base href="/">
 </head>
 <body>
-
 	<div>
-		<meteor-include src="loginButtons"></meteor-include>
-		<h1>
-			<a href="/picks">Picks</a> <a href="/labels">Labels</a> <a
-				href="/users">Users</a>
-		</h1>
-		<div ui-view></div>
+		<div class="container">
+			<div class="header clearfix">
+				<nav>
+					<ul class="nav nav-pills pull-right">
+						<li role="presentation"><a href="/picks/new">New Pick</a></li>
+						<li role="presentation"><a href="/picks">Picks</a></li>
+						<li role="presentation"><a href="/labels">Labels</a></li>
+						<li role="presentation"><a href="/users">Users</a></li>
+						<li role="presentation"><meteor-include src="loginButtons"></meteor-include>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div ui-view></div>
+		</div>
 	</div>
-
 </body>
