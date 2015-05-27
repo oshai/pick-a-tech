@@ -1,3 +1,19 @@
+<div class="panel panel-info" ng-repeat="label in labels">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{label.name}}</h3>
+  </div>
+  <div class="panel-body">
+  	<div class="row">
+  		<div class="col-lg-2">
+    		<img src="{{label.image}}" width="50px">
+    	</div>
+  		<div class="col-lg-10 break-word">
+    		{{label.description}}
+    	</div>
+    </div>
+  </div>
+</div>
+
 <form>
   <label>Name</label>
   <input ng-model="newLabel.name">
@@ -17,18 +33,3 @@
   </li>
 </ul>
  -->
-<div class="panel panel-default" ng-repeat="label in labels">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{label.name}}</h3>
-  </div>
-  <div class="panel-body">
-  	<div class="row">
-  		<div class="col-lg-2">
-    		<img src="{{label.image}}" width="50px">
-    	</div>
-  		<div class="col-lg-10 break-word">
-    		{{label.description}}
-    	</div>
-    </div>
-  </div>
-</div>

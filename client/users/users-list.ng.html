@@ -1,6 +1,19 @@
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Users</div>
+  
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="user in users">{{ user.emails[0].address }}</li>
+  </ul>
+</div>
+<!-- 
 <ul>
   Users:
   <li ng-repeat="user in users">
     <div>{{ user.emails[0].address }}</div>
   </li>
 </ul>
+-->
+ 
