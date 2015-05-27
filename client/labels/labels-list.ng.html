@@ -3,13 +3,32 @@
   <input ng-model="newLabel.name">
   <label>Description</label>
   <input ng-model="newLabel.description">
+  <label>Image</label>
+  <input ng-model="newLabel.image">
   <button ng-click="newLabel.owner=$root.currentUser._id; labels.push(newLabel)">Add</button>
   <button ng-click="removeAll()">Remove All</button>
 </form>
+<!-- 
 <ul>
-  <li ng-repeat="label in labels">
+  <li >
     <a href="/labels/{{label._id}}">{{label.name}}</a>
     <p>{{label.description}}</p>
     <button ng-click="remove(label)">X</button>
   </li>
 </ul>
+ -->
+<div class="panel panel-default" ng-repeat="label in labels">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{label.name}}</h3>
+  </div>
+  <div class="panel-body">
+  	<div class="row">
+  		<div class="col-lg-2">
+    		<img src="{{label.image}}" width="50px">
+    	</div>
+  		<div class="col-lg-10 break-word">
+    		{{label.description}}
+    	</div>
+    </div>
+  </div>
+</div>
