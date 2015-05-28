@@ -1,7 +1,42 @@
-<form>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">New Pick</h3>
+	</div>
+	<div class="panel-body">
+		<div>
+			<h3></h3>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="candidates" class="col-sm-3 control-label">Labels</label>
+					<div class="col-sm-9">
+						<ui-select multiple ng-model="newPick.candidates" theme="bootstrap">
+						<ui-select-match placeholder="Select labels...">{{$item.name}}</ui-select-match>
+						<ui-select-choices
+							repeat="label in labels | filter:$select.search">
+						<div ng-bind-html="label.name | highlight: $select.search"></div>
+						<small> {{label.description.length > 50 ?
+							label.description.substr(0, 49) + '...' : label.description}} </small> </ui-select-choices> </ui-select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description" class="col-sm-3 control-label">Description</label>
+					<div class="col-sm-9">
+						<textarea class="form-control" id="description" ng-model="newPick.description"
+							name="description" placeholder="Please describe the problem... markdown is allowed"
+							required rows="10"></textarea>
+					</div>
+				</div>
+				<button ng-click="createNew()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- <form>
   <pick>Name</pick>
   <input ng-model="newPick.name">
   <pick>Description</pick>
   <input ng-model="newPick.description">
   <button ng-click="createNew()">Add</button>
-</form>
+</form> -->

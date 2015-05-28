@@ -13,3 +13,5 @@ accounts-facebook
 less
 accounts-ui
 oshai:angular-marked
+angularui:ui-select
+angular:angular-sanitize
