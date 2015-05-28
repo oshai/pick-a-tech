@@ -1,4 +1,8 @@
-angular.module('pick-a-tech',['angular-meteor', 'ui.router']);
+angular.module('pick-a-tech',['angular-meteor', 'ui.router', 'hc.marked']);
+
+angular.module('pick-a-tech').config(['markedProvider', function(markedProvider) {
+    markedProvider.setOptions({gfm: true, breaks: true});
+  }]);
 
 function onReady() {
   angular.bootstrap(document, ['pick-a-tech']);
