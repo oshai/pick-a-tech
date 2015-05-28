@@ -1,6 +1,0 @@
-to deploy: meteor deploy pick-a-tech.meteor.com
-
-ng-annotate and .ng.js step #2 minification
-
-TODO:
-nav panel active on page
