@@ -1,10 +1,21 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div>
+			<!-- 
+				<header>
+					<h1>Picks</h1>
+				</header>
+				 -->
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="pick in picks">
+					<a href="/pick/{{pick._id}}/{{pick.title}}">
+						<h4>{{pick.title}}</h4> <!-- {{content}}  -->
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 <form>
-  <button ng-click="removeAll()">Remove All</button>
+	<button ng-click="removeAll()">Remove All</button>
 </form>
-<ul>
-  <li ng-repeat="pick in picks">
-    <a href="/picks/{{pick._id}}">{{pick.name}}</a>
-    <p>{{pick.description}}</p>
-    <button ng-click="remove(pick)">X</button>
-  </li>
-</ul>
