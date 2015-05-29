@@ -25,7 +25,7 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
     	  controller: 'PicksListCtrl'
       })
       .state('pickDetails', {
-    	  url: '/picks/:pickId',
+    	  url: '/picks/:pickId/:pickTitle',
     	  templateUrl: 'client/picks/pick-details.ng.html',
     	  controller: 'PickDetailsCtrl'
       })
@@ -34,7 +34,14 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
         templateUrl: 'client/users/users-list.ng.html',
         controller: 'UsersListCtrl'
       })
+      .state('notFound', {
+        templateUrl: 'client/404.ng.html'
+      })
       ;
-
-    $urlRouterProvider.otherwise("/picks");
+    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.when('/', '/picks');
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        $injector.invoke(['$state', function ($state) { $state.go('notFound'); }]);
+        return true;
+    });
   }]);
