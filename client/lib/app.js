@@ -1,4 +1,5 @@
-angular.module('pick-a-tech',['angular-meteor', 'ui.router', 'hc.marked', 'ui.select', 'ngSanitize']);
+angular.module('pick-a-tech',[
+    'angular-meteor', 'ui.router', 'hc.marked', 'ui.select', 'ngSanitize', 'ui.bootstrap']);
 
 angular.module('pick-a-tech').config(['markedProvider', function(markedProvider) {
     markedProvider.setOptions({gfm: true, breaks: true});
