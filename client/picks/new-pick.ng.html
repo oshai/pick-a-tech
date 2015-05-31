@@ -7,8 +7,8 @@
 			<h3></h3>
 			<form class="form-horizontal">
 				<div class="form-group">
-					<label for="candidates" class="col-sm-3 control-label">Labels</label>
-					<div class="col-sm-9">
+					<label for="candidates" class="col-md-3 control-label">Labels</label>
+					<div class="col-md-9">
 						<ui-select multiple ng-model="newPick.candidates" theme="bootstrap">
 						<ui-select-match placeholder="Select labels...">{{$item.name}}</ui-select-match>
 						<ui-select-choices
@@ -19,8 +19,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="description" class="col-sm-3 control-label">Description</label>
-					<div class="col-sm-9">
+					<label for="description" class="col-md-3 control-label">Description</label>
+					<div class="col-md-9">
 						<textarea class="form-control" id="description" ng-model="newPick.description"
 							name="description" placeholder="Please describe the problem... markdown is allowed"
 							required rows="10" style="resize: none;"></textarea>
