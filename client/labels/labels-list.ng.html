@@ -1,20 +1,44 @@
-<div class="panel panel-info" ng-repeat="label in labels">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{label.name}}</h3>
-  </div>
-  <div class="panel-body">
-  	<div class="row">
-  		<div class="col-lg-2">
-    		<img src="{{label.image}}" width="50px">
-    	</div>
-  		<div class="col-lg-10 break-word">
-	  		<div marked="label.description">
-	    	</div>
-    	</div>
-    </div>
-  </div>
+<div class="row">
+	<div class="col-md-12">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li><button class="btn btn-default btn-sm navbar-btn">New Label...</button></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</div>
 </div>
-
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-info" ng-repeat="label in labels">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{label.name}}</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-2">
+						<img src="{{label.image}}" width="50px">
+					</div>
+					<div class="col-lg-10 break-word">
+						<div marked="label.description"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
 <form>
   <label>Name</label>
   <input ng-model="newLabel.name">
@@ -27,12 +51,4 @@
   <button ng-click="createLabel()">Add</button>
   <button ng-click="removeAll()">Remove All</button>
 </form>
-<!-- 
-<ul>
-  <li >
-    <a href="/labels/{{label._id}}">{{label.name}}</a>
-    <p>{{label.description}}</p>
-    <button ng-click="remove(label)">X</button>
-  </li>
-</ul>
  -->
