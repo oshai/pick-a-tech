@@ -3,12 +3,13 @@
 		<h3 class="panel-title">{{pick.title}}</h3>
 	</div>
 	<div class="panel-body">
-
 		<div class="row">
 			<div class="col-sm-1">
-				<i class="vote-icon fa fa-sort-asc fa-3x" ng-click="vote('description_vote_up')" ng-style="getVoteColor('description_vote_up')"></i> <span
-					class="vote-text">{{descriptionVotesCount()}}</span> <i
-					class="vote-icon fa fa-sort-desc fa-3x" ng-click="vote('description_vote_down')" ng-style="getVoteColor('description_vote_down')"></i>
+				<i class="vote-icon fa fa-sort-asc fa-3x" ng-click="vote('description_vote_up')"
+					ng-style="getVoteColor('description_vote_up')"></i>
+				<span class="vote-text">{{descriptionVotesCount()}}</span>
+				<i class="vote-icon fa fa-sort-desc fa-3x" ng-click="vote('description_vote_down')"
+					ng-style="getVoteColor('description_vote_down')"></i>
 			</div>
 			<div class="col-sm-11">
 				<div class="well well-lg" marked="pick.description"></div>
@@ -23,10 +24,10 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-2">
-				<i class="vote-icon fa fa-thumbs-o-up fa-3x"></i> <br />
+				<i class="vote-icon fa fa-thumbs-o-up fa-3x"></i>
+				<span class="vote-text">12</span>
 				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="60"
-						aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
 						60%</div>
 				</div>
 			</div>
@@ -34,13 +35,20 @@
 				<div class="row">
 					<div class="col-md-1">
 						<i class="vote-icon fa fa-caret-up fa-2x"></i>
+						<span class="vote-text-small">12</span>
+						<i class="vote-icon fa fa-caret-down fa-2x"></i>
 					</div>
 					<div class="col-md-11">
-					<!-- id="description" ng-model="newPick.description"
+						<!-- id="description" ng-model="newPick.description"
 							name="description"  marked="pick.description-->
-						<div class="well well-sm">pros/cons</div>
+						<div class="well well-lg">pros/cons</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-default btn-sm pull-right" ng-click="openCreateModal()">Add</button>
 			</div>
 		</div>
 	</div>
