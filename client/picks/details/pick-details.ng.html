@@ -17,6 +17,52 @@
 		</div>
 	</div>
 </div>
+<div class="panel panel-warning" ng-repeat="candidate in pick.candidates">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{getLabelName(candidate.label_id)}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-2">
+				<i class="vote-icon fa fa-thumbs-o-up fa-3x" ng-click="vote('label_thumb_up', candidate.label_id)"
+					ng-style="getVoteColor('description_vote_up')"></i>
+				<span class="vote-text">{{candidate.vote_up.length}}</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+						{{voteUpPercent(candidate)}}</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="row" ng-repeat="proCon in candidate.pros_cons">
+					<div class="col-md-1">
+						<i class="vote-icon fa fa-caret-up fa-2x"></i>
+						<span class="vote-text-small">12</span>
+						<i class="vote-icon fa fa-caret-down fa-2x"></i>
+					</div>
+					<div class="col-md-11">
+						<div class="well well-lg">{{proCon.content}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-default btn-sm pull-right" ng-click="openProConModal(candidate)"><i class="fa fa-plus"></i> Add</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 
+
 <div class="panel panel-warning">
 	<div class="panel-heading">
 		<h3 class="panel-title">label title</h3>
@@ -39,8 +85,8 @@
 						<i class="vote-icon fa fa-caret-down fa-2x"></i>
 					</div>
 					<div class="col-md-11">
-						<!-- id="description" ng-model="newPick.description"
-							name="description"  marked="pick.description-->
+						id="description" ng-model="newPick.description"
+							name="description"  marked="pick.description
 						<div class="well well-lg">pros/cons</div>
 					</div>
 				</div>
@@ -52,16 +98,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
+</div> -->

@@ -27,7 +27,14 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
       .state('pickDetails', {
     	  url: '/picks/:pickId/:pickTitle',
     	  templateUrl: 'client/picks/details/pick-details.ng.html',
-    	  controller: 'PickDetailsCtrl'
+    	  controller: 'PickDetailsCtrl',
+    	  resolve: {
+    	      'subscribe': [
+    	        '$meteor', function($meteor) {
+    	          return $meteor.subscribe('picks');
+    	        }
+    	      ]
+    	    }
       })
       .state('users', {
         url: '/users',

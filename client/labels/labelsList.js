@@ -16,7 +16,7 @@ angular.module("pick-a-tech").controller("LabelsListCtrl",
         var modalInstance = $modal.open({
           animation: true,
           templateUrl: 'client/labels/edit/edit-label-modeal-content.ng.html',
-          controller: 'ModalInstanceCtrl',
+          controller: 'NewLabelModalInstanceCtrl',
           size: 'lg'
 //          resolve: {
 //            items: function () {
