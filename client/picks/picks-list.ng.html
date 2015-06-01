@@ -8,7 +8,7 @@
 				 -->
 			<ul class="list-group">
 				<li class="list-group-item" ng-repeat="pick in picks">
-					<a href="/picks/{{pick._id}}/{{pick.title}}">
+					<a href="/picks/{{pick._id}}/{{getTitle(pick.title)}}">
 						<h4>{{pick.title}}</h4> <!-- {{content}}  -->
 					</a>
 				</li>

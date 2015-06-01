@@ -3,11 +3,8 @@ angular.module("pick-a-tech").controller("PicksListCtrl", ['$scope', '$meteor',
 
     $scope.picks = $meteor.collection(Picks).subscribe('picks');
 
-    $scope.remove = function(pick){
-      $scope.picks.splice( $scope.picks.indexOf(pick), 1 );
+    $scope.getTitle = function(title){
+      return title.replace(new RegExp(' ', 'g'), '_');
     };
 
-    $scope.removeAll = function(){
-      $scope.picks.remove();
-    };
 }]);
