@@ -11,7 +11,7 @@
                     <label for="candidates" class="col-md-3 control-label">Labels</label>
 
                     <div class="col-md-9">
-                        <ui-select multiple ng-model="newCandidates" theme="bootstrap">
+                        <ui-select multiple ng-model="newCandidates.names" theme="bootstrap">
                             <ui-select-match placeholder="Select labels...">{{$item.name}}</ui-select-match>
                             <ui-select-choices
                                     repeat="label in labels | filter:$select.search">

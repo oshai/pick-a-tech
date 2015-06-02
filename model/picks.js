@@ -5,7 +5,7 @@ Picks.allow({
 	    return userId && pick.owner === userId;
 	  },
 	  update: function (userId, pick, fields, modifier) {
-	    return Meteor.isServer;
+	    return false;
 	  },
 	  remove: function (userId, pick) {
 	    if (userId !== pick.owner)

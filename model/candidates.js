@@ -2,19 +2,13 @@ Candidates = new Mongo.Collection("candidates");
 
 Candidates.allow({
 	  insert: function (userId, label) {
-	    return userId && label.owner === userId;
+	    return userId;
 	  },
 	  update: function (userId, label, fields, modifier) {
-	    if (userId !== label.owner)
-	      return false;
-
-	    return true;
+	    return false;
 	  },
 	  remove: function (userId, label) {
-	    if (userId !== label.owner)
-	      return false;
-
-	    return true;
+	    return false;
 	  }
 	});
 

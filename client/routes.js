@@ -29,11 +29,21 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
     	  templateUrl: 'client/picks/details/pick-details.ng.html',
     	  controller: 'PickDetailsCtrl',
     	  resolve: {
-    	      'subscribe': [
+    	      'subscribePicks': [
     	        '$meteor', function($meteor) {
     	          return $meteor.subscribe('picks');
     	        }
-    	      ]
+    	      ],
+    	      'subscribeComments': [
+    	        '$meteor', function($meteor) {
+    	          return $meteor.subscribe('comments');
+    	        }
+    	      ],
+              'subscribeCandidates': [
+                  '$meteor', function($meteor) {
+                      return $meteor.subscribe('candidates');
+                  }
+              ]
     	    }
       })
       .state('users', {
