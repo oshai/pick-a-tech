@@ -49,10 +49,15 @@ Meteor.methods({
 					target = i;
 				}
 			}
-			if (selfClick) {
-				//just remove
-			} else {
-				//remove and add
+			if (found !== -1) {
+				//remove
+				var pullKey = "candidates." + found.toString() + ".vote_up";
+				Picks.update({_id: pickId}, {$pull: {pullKey : userId}});
+			} 
+			if (!selfClick) {
+				//add
+				var addKey = "candidates." + target.toString() + ".vote_up";
+				Picks.update({_id: pickId}, {$push: {addKey : userId}});
 			}
 		}
 	}
