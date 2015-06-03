@@ -11,6 +11,8 @@ Meteor.methods({
             check(objectId, String);
         }
         var pick = Picks.findOne(pickId);
+        var userid = -1;
+        var score = 0;
 
         //need to test that
         if (key === 'description_vote_up') {
@@ -23,6 +25,8 @@ Meteor.methods({
                     Picks.update(pickId, {$addToSet: {vote_up: userId}});
                 }
             }
+            userid = pick.owner;
+            score = 5;
         }
         if (key === 'description_vote_down') {
             if (_.contains(pick.vote_down, userId)) {
@@ -34,6 +38,8 @@ Meteor.methods({
                     Picks.update(pickId, {$addToSet: {vote_down: userId}});
                 }
             }
+            userid = pick.owner;
+            score = -5;
         }
         if (key === 'comment_vote_up') {
             var comment = Comments.findOne(objectId);
@@ -46,6 +52,8 @@ Meteor.methods({
                     Comments.update(objectId, {$addToSet: {vote_up: userId}});
                 }
             }
+            userid = comment.owner;
+            score = 5;
         }
         if (key === 'comment_vote_down') {
             var comment = Comments.findOne(objectId);
@@ -58,6 +66,8 @@ Meteor.methods({
                     Comments.update(objectId, {$addToSet: {vote_down: userId}});
                 }
             }
+            userid = comment.owner;
+            score = -5;
         }
         if (key === 'label_thumb_up') {
             var candidates = Candidates.find({pick_id: pickId}).fetch();
@@ -80,5 +90,6 @@ Meteor.methods({
                 Candidates.update({_id: target._id}, {$push: {vote_up: userId}});
             }
         }
+        Userinfo.update({user_id: userid}, {$inc: {score: score}}, {upsert:true});
     }
 });
