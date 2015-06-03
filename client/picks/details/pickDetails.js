@@ -23,31 +23,24 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",
         $scope.descriptionVotesCount = function () {
             return $scope.pick.vote_up.length - $scope.pick.vote_down.length;
         };
+        $scope.commentVotesCount = function (comment) {
+            return comment.vote_up.length - comment.vote_down.length;
+        };
         $scope.style = function (color) {
             return {
                 color: color
             };
         }
-        $scope.getVoteColor = function (key, id) {
+        $scope.getVoteColor = function (key, object) {
             var color = '#777';
             if ($rootScope.currentUser === 'undefined' || $rootScope.currentUser === null) {
                 return $scope.style(color);
             }
-            if (key === 'description_vote_up' && _.contains($scope.pick.vote_up, $rootScope.currentUser._id)) {
+            if (key === 'vote_up' && _.contains(object.vote_up, $rootScope.currentUser._id)) {
                 color = '#9966FF';
             }
-            if (key === 'description_vote_down' && _.contains($scope.pick.vote_down, $rootScope.currentUser._id)) {
+            if (key === 'vote_down' && _.contains(object.vote_down, $rootScope.currentUser._id)) {
                 color = '#9966FF';
-            }
-            if (key === 'label_thumb_up') {
-                for (var i = 0; i < $scope.candidates.length; i++) {
-                    if ($scope.candidates[i]._id === id) {
-                        if (_.contains($scope.candidates[i].vote_up, $rootScope.currentUser._id)) {
-                            color = '#9966FF';
-                        }
-                        break;
-                    }
-                }
             }
             return $scope.style(color);
         };

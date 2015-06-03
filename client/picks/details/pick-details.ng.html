@@ -6,10 +6,10 @@
 		<div class="row">
 			<div class="col-sm-1">
 				<i class="vote-icon fa fa-sort-asc fa-3x" ng-click="vote('description_vote_up')"
-					ng-style="getVoteColor('description_vote_up')"></i>
+					ng-style="getVoteColor('vote_up', pick)"></i>
 				<span class="vote-text">{{descriptionVotesCount()}}</span>
 				<i class="vote-icon fa fa-sort-desc fa-3x" ng-click="vote('description_vote_down')"
-					ng-style="getVoteColor('description_vote_down')"></i>
+					ng-style="getVoteColor('vote_down', pick)"></i>
 			</div>
 			<div class="col-sm-11">
 				<div class="well well-lg" marked="pick.description"></div>
@@ -25,7 +25,7 @@
 		<div class="row">
 			<div class="col-md-2">
 				<i class="vote-icon fa fa-thumbs-o-up fa-3x" ng-click="vote('label_thumb_up', candidate._id)"
-					ng-style="getVoteColor('label_thumb_up', candidate._id)"></i>
+					ng-style="getVoteColor('vote_up', candidate)"></i>
 				<span class="vote-text">{{candidate.vote_up.length}}</span>
 				<div class="progress">
 					<div class="progress-bar" role="progressbar" aria-valuenow="{{voteUpPercent(candidate)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: voteUpPercent(candidate) + '%'}" style="min-width: 2em;">
@@ -35,9 +35,11 @@
 			<div class="col-md-10">
 				<div class="row" ng-repeat="proCon in commentsOf(candidate)">
 					<div class="col-md-1">
-						<i class="vote-icon fa fa-caret-up fa-2x"></i>
-						<span class="vote-text-small">12</span>
-						<i class="vote-icon fa fa-caret-down fa-2x"></i>
+                        <i class="vote-icon fa fa-sort-asc fa-2x" ng-click="vote('comment_vote_up', proCon._id)"
+                           ng-style="getVoteColor('vote_up', proCon)"></i>
+                        <span class="vote-text">{{commentVotesCount(proCon)}}</span>
+                        <i class="vote-icon fa fa-sort-desc fa-2x" ng-click="vote('comment_vote_down', proCon._id)"
+                           ng-style="getVoteColor('vote_down', proCon)"></i>
 					</div>
 					<div class="col-md-11">
 						<div class="well well-lg">{{proCon.content}}</div>
