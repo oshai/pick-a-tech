@@ -51,6 +51,10 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
         templateUrl: 'client/users/users-list.ng.html',
         controller: 'UsersListCtrl'
       })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'client/about.ng.html',
+      })
       .state('notFound', {
         templateUrl: 'client/404.ng.html'
       })
