@@ -1,4 +1,4 @@
-angular.module("pick-a-tech").controller("PickDetailsCtrl",["$scope", "$stateParams", "$meteor", "$rootScope", "$modal", "$log",
+angular.module("pick-a-tech").controller("PickDetailsCtrl",
     function ($scope, $stateParams, $meteor, $rootScope, $modal, $log) {
 
         $scope.pick = $meteor.object(Picks, $stateParams.pickId);
@@ -83,4 +83,4 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",["$scope", "$statePar
             });
 
         };
-    }]);
+    });
