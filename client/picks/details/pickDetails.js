@@ -10,12 +10,6 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",
             if (c.pick_id === $scope.pick._id) {
                 var label = $meteor.object(Labels, c.label_id).subscribe('labels');
                 $scope.labels[c.label_id] = label;
-                c.pros_cons = [];
-                $scope.comments.forEach(function (comment) {
-                    if (comment.candidate_id === c._id) {
-                        c.pros_cons.push(comment);
-                    }
-                });
                 $scope.candidates.push(c);
             }
         });
