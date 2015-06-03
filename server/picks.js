@@ -3,11 +3,13 @@ Meteor.publish("picks", function() {
 });
 
 Meteor.methods({
-	vote : function(pickId, userId, key, id) {
+	vote : function(pickId, userId, key, candidateId) {
 		check(pickId, String);
 		check(userId, String);
 		check(key, String);
-		check(id, String);
+		if (candidateId) {
+            check(candidateId, String);
+        }
 		var pick = Picks.findOne(pickId);
 
 		//need to test that
@@ -34,30 +36,24 @@ Meteor.methods({
 			}
 		}
 		if (key === 'label_thumb_up') {
-			var arrayLength = pick.candidates.length;
-			var found = -1;
-			var target = -1;
-			var selfClick = false;
-			for (var i = 0; i < arrayLength; i++) {
-				if (_.contains(pick.candidates[i], userId)) {
-					found = i;
-					if (pick.candidates[i].label_id === id) {
-						selfClick = true;
-					}
+            var candidates = Candidates.find({pick_id: pickId}).fetch();
+			var found = null;
+			var target = null;
+			for (var i = 0; i < candidates.length; i++) {
+				if (_.contains(candidates[i].vote_up, userId)) {
+					found = candidates[i];
 				}
-				if (pick.candidates[i].label_id === id) {
-					target = i;
+				if (candidates[i]._id === candidateId) {
+					target = candidates[i];
 				}
 			}
-			if (found !== -1) {
+			if (found) {
 				//remove
-				var pullKey = "candidates." + found.toString() + ".vote_up";
-				Picks.update({_id: pickId}, {$pull: {pullKey : userId}});
+                Candidates.update({_id: found._id}, {$pull: {vote_up : userId}});
 			} 
-			if (!selfClick) {
+			if (target && found !== target) {
 				//add
-				var addKey = "candidates." + target.toString() + ".vote_up";
-				Picks.update({_id: pickId}, {$push: {addKey : userId}});
+                Candidates.update({_id: target._id}, {$push: {vote_up : userId}});
 			}
 		}
 	}

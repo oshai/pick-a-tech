@@ -24,16 +24,16 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-2">
-				<i class="vote-icon fa fa-thumbs-o-up fa-3x" ng-click="vote('label_thumb_up', candidate.label_id)"
-					ng-style="getVoteColor('description_vote_up')"></i>
+				<i class="vote-icon fa fa-thumbs-o-up fa-3x" ng-click="vote('label_thumb_up', candidate._id)"
+					ng-style="getVoteColor('label_thumb_up', candidate._id)"></i>
 				<span class="vote-text">{{candidate.vote_up.length}}</span>
 				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-						{{voteUpPercent(candidate)}}</div>
+					<div class="progress-bar" role="progressbar" aria-valuenow="{{voteUpPercent(candidate)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: voteUpPercent(candidate) + '%'}" style="min-width: 2em;">
+						{{voteUpPercent(candidate)}}%</div>
 				</div>
 			</div>
 			<div class="col-md-10">
-				<div class="row" ng-repeat="proCon in candidate.pros_cons">
+				<div class="row" ng-repeat="proCon in commentsOf(candidate)">
 					<div class="col-md-1">
 						<i class="vote-icon fa fa-caret-up fa-2x"></i>
 						<span class="vote-text-small">12</span>
