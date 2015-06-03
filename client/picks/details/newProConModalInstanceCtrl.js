@@ -1,4 +1,4 @@
-angular.module("pick-a-tech").controller('NewProConModalInstanceCtrl', function($scope, $modalInstance) {
+angular.module("pick-a-tech").controller('NewProConModalInstanceCtrl', ["$scope", "$modalInstance", function($scope, $modalInstance) {
 
 	$scope.pro = true;
 	$scope.proCon = '';
@@ -13,4 +13,4 @@ angular.module("pick-a-tech").controller('NewProConModalInstanceCtrl', function(
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
-});
+}]);

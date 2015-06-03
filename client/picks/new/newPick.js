@@ -1,4 +1,4 @@
-angular.module("pick-a-tech").controller("NewPickCtrl",
+angular.module("pick-a-tech").controller("NewPickCtrl", ["$scope", "$stateParams", "$meteor", "$location", "$rootScope", "$q",
     function ($scope, $stateParams, $meteor, $location, $rootScope, $q) {
 
         $scope.picks = $meteor.collection(Picks).subscribe('picks');
@@ -39,4 +39,4 @@ angular.module("pick-a-tech").controller("NewPickCtrl",
             });
         };
 
-    });
+    }]);
