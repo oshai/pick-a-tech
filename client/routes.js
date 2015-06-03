@@ -11,7 +11,10 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
                     '$meteor', function ($meteor) {
                         return $meteor.subscribe('userinfo');
                     }
-                ]
+                ],
+                loggedIn: ['$rootScope', function ($rootScope) {
+                    return $rootScope.currentUserPromise;
+                }]
             }
         };
         $stateProvider
