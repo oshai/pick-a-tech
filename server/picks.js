@@ -53,7 +53,7 @@ Meteor.methods({
                 }
             }
             userid = comment.owner;
-            score = 5;
+            score = 10;
         }
         if (key === 'comment_vote_down') {
             var comment = Comments.findOne(objectId);
@@ -67,7 +67,7 @@ Meteor.methods({
                 }
             }
             userid = comment.owner;
-            score = -5;
+            score = -10;
         }
         if (key === 'label_thumb_up') {
             var candidates = Candidates.find({pick_id: pickId}).fetch();
@@ -90,6 +90,12 @@ Meteor.methods({
                 Candidates.update({_id: target._id}, {$push: {vote_up: userId}});
             }
         }
-        Userinfo.update({user_id: userid}, {$inc: {score: score}}, {upsert:true});
+        if (userid !== -1) {
+            var userinfoObject = Userinfo.findOne({user_id: userid});
+            if (userinfoObject === undefined) {
+                Userinfo.insert({user_id: userid, score: 1});
+            }
+            Userinfo.update({user_id: userid}, {$inc: {score: score}}, {upsert: true});
+        }
     }
 });
