@@ -1,3 +1,12 @@
+angular.module("pick-a-tech").run(["$rootScope", "$state",  function($rootScope, $state) {
+    $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+        if (error === "AUTH_REQUIRED") {
+            Notifications.warn('Sign-In required!', 'Please sign in');
+        }
+    });
+}]);
+
+
 angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
     function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
@@ -44,7 +53,12 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
                     'userBadge': userBadgeView,
                     'content': {
                         templateUrl: 'client/picks/new/new-pick.ng.html',
-                        controller: 'NewPickCtrl'
+                        controller: 'NewPickCtrl',
+                        resolve: {
+                            "currentUser": ["$meteor", function($meteor){
+                                return $meteor.requireUser();
+                            }]
+                        }
                     }
                 }
             })
