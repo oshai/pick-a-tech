@@ -24,3 +24,10 @@ Meteor.methods({
         return result;
     }
 });
+
+Meteor.users.deny({
+    update: function() {
+        return true;
+    }
+});
+

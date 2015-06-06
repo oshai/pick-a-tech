@@ -12,25 +12,29 @@ angular.module("pick-a-tech").controller("LabelsListCtrl",
     };
 
     $scope.openCreateModal = function () {
+        $meteor.requireUser().then(function(){
+            var modalInstance = $modal.open({
+              animation: true,
+              templateUrl: 'client/labels/edit/edit-label-modeal-content.ng.html',
+              controller: 'NewLabelModalInstanceCtrl',
+              size: 'lg'
+    //          resolve: {
+    //            items: function () {
+    //              return $scope.items;
+    //            }
+    //          }
+            });
 
-        var modalInstance = $modal.open({
-          animation: true,
-          templateUrl: 'client/labels/edit/edit-label-modeal-content.ng.html',
-          controller: 'NewLabelModalInstanceCtrl',
-          size: 'lg'
-//          resolve: {
-//            items: function () {
-//              return $scope.items;
-//            }
-//          }
-        });
+            modalInstance.result.then(function (newLabel) {
+                $scope.createLabel(newLabel);
+            }, function () {
+              $log.info('Modal dismissed(cancel) at: ' + new Date());
+            });
+          }, function(){
+            Notifications.warn('Sign-In required!', 'Please sign in');
+        })
+    };
 
-        modalInstance.result.then(function (newLabel) {
-        	$scope.createLabel(newLabel);
-        }, function () {
-          $log.info('Modal dismissed(cancel) at: ' + new Date());
-        });
-      };
       
     $scope.removeAll = function(){
       $scope.labels.remove();
