@@ -2,8 +2,8 @@ angular.module("pick-a-tech").controller("UserBadgeController",
     function ($scope, $meteor, $rootScope, $log) {
 
         $meteor.autorun($scope, function() {
-            if (null !== $rootScope.currentUser) {
-                $scope.userForScore = $scope.$meteorObject(Userinfo, {user_id: $scope.getReactively('currentUser')._id});//$rootScope.currentUser._id
+            if (null !== Meteor.userId()) {
+                $scope.userForScore = $scope.$meteorObject(Userinfo, {user_id: Meteor.userId()});
             }
         });
 
