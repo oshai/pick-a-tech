@@ -43,6 +43,7 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",
                 console.log('success vote', data);
             }, function (err) {
                 console.log('failed', err);
+                Notifications.warn('Error', err.reason);
             });
         };
         $scope.getLabelName = function (label_id) {

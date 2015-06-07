@@ -16,6 +16,9 @@ Meteor.methods({
 
         //need to test that
         if (key === 'description_vote_up') {
+            if (userId === pick.owner) {
+                throw new Meteor.Error( 500, 'You cannot vote for yourself' );
+            }
             if (_.contains(pick.vote_up, userId)) { //contains and press up
                 Picks.update(pickId, {$pull: {vote_up: userId}});
                 score = -5;
@@ -30,6 +33,9 @@ Meteor.methods({
             userid = pick.owner;
         }
         if (key === 'description_vote_down') {
+            if (userId === pick.owner) {
+                throw new Meteor.Error( 500, 'You cannot vote for yourself' );
+            }
             if (_.contains(pick.vote_down, userId)) {
                 Picks.update(pickId, {$pull: {vote_down: userId}});
                 score = 5;
@@ -45,6 +51,9 @@ Meteor.methods({
         }
         if (key === 'comment_vote_up') {
             var comment = Comments.findOne(objectId);
+            if (userId === comment.owner) {
+                throw new Meteor.Error( 500, 'You cannot vote for yourself' );
+            }
             if (_.contains(comment.vote_up, userId)) { //contains and press up
                 Comments.update(objectId, {$pull: {vote_up: userId}});
                 score = -10;
@@ -60,6 +69,9 @@ Meteor.methods({
         }
         if (key === 'comment_vote_down') {
             var comment = Comments.findOne(objectId);
+            if (userId === comment.owner) {
+                throw new Meteor.Error( 500, 'You cannot vote for yourself' );
+            }
             if (_.contains(comment.vote_down, userId)) {
                 Comments.update(objectId, {$pull: {vote_down: userId}});
                 score = 10;
