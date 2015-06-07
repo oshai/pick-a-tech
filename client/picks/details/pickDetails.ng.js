@@ -39,12 +39,16 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",
             return $scope.style(color);
         };
         $scope.vote = function (key, id) {
-            $meteor.call('vote', $scope.pick._id, $rootScope.currentUser._id, key, id).then(function (data) {
-                console.log('success vote', data);
-            }, function (err) {
-                console.log('failed', err);
-                Notifications.warn('Error', err.reason);
-            });
+            if ($rootScope.currentUser) {
+                $meteor.call('vote', $scope.pick._id, $rootScope.currentUser._id, key, id).then(function (data) {
+                    console.log('success vote', data);
+                }, function (err) {
+                    console.log('failed', err);
+                    Notifications.warn('Error', err.reason);
+                });
+            } else {
+                Notifications.warn('Error', 'Please sign in to vote');
+            }
         };
         $scope.getLabelName = function (label_id) {
             return $scope.labels[label_id].name;
@@ -70,6 +74,10 @@ angular.module("pick-a-tech").controller("PickDetailsCtrl",
             return res;
         }
         $scope.openProConModal = function (candidate) {
+            if (!$rootScope.currentUser) {
+                Notifications.warn('Error', 'Please sign in to comment');
+                return;
+            }
             var modalInstance = $modal.open({
                 animation: true,
                 templateUrl: 'client/picks/details/edit-pro-con-modal-content.ng.html',
