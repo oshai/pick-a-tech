@@ -18,56 +18,60 @@ Meteor.methods({
         if (key === 'description_vote_up') {
             if (_.contains(pick.vote_up, userId)) { //contains and press up
                 Picks.update(pickId, {$pull: {vote_up: userId}});
+                score = -5;
             } else {
                 if (_.contains(pick.vote_down, userId)) { //press up down contains
                     Picks.update(pickId, {$pull: {vote_down: userId}});
                 } else { //press up none contains
                     Picks.update(pickId, {$addToSet: {vote_up: userId}});
                 }
+                score = 5;
             }
             userid = pick.owner;
-            score = 5;
         }
         if (key === 'description_vote_down') {
             if (_.contains(pick.vote_down, userId)) {
                 Picks.update(pickId, {$pull: {vote_down: userId}});
+                score = 5;
             } else {
                 if (_.contains(pick.vote_up, userId)) {
                     Picks.update(pickId, {$pull: {vote_up: userId}});
                 } else {
                     Picks.update(pickId, {$addToSet: {vote_down: userId}});
                 }
+                score = -5;
             }
             userid = pick.owner;
-            score = -5;
         }
         if (key === 'comment_vote_up') {
             var comment = Comments.findOne(objectId);
             if (_.contains(comment.vote_up, userId)) { //contains and press up
                 Comments.update(objectId, {$pull: {vote_up: userId}});
+                score = -10;
             } else {
                 if (_.contains(comment.vote_down, userId)) { //press up down contains
                     Comments.update(objectId, {$pull: {vote_down: userId}});
                 } else { //press up none contains
                     Comments.update(objectId, {$addToSet: {vote_up: userId}});
                 }
+                score = 10;
             }
             userid = comment.owner;
-            score = 10;
         }
         if (key === 'comment_vote_down') {
             var comment = Comments.findOne(objectId);
             if (_.contains(comment.vote_down, userId)) {
                 Comments.update(objectId, {$pull: {vote_down: userId}});
+                score = 10;
             } else {
                 if (_.contains(comment.vote_up, userId)) {
                     Comments.update(objectId, {$pull: {vote_up: userId}});
                 } else {
                     Comments.update(objectId, {$addToSet: {vote_down: userId}});
                 }
+                score = -10;
             }
             userid = comment.owner;
-            score = -10;
         }
         if (key === 'label_thumb_up') {
             var candidates = Candidates.find({pick_id: pickId}).fetch();

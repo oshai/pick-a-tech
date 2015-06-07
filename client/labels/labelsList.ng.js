@@ -1,7 +1,7 @@
 angular.module("pick-a-tech").controller("LabelsListCtrl",
   function($scope, $meteor, $rootScope, $modal, $log){
 
-    $scope.labels = $meteor.collection(Labels).subscribe('labels');
+    $scope.labels = $scope.$meteorCollection(Labels).subscribe('labels');
 
     $scope.remove = function(label){
       $scope.labels.splice( $scope.labels.indexOf(label), 1 );

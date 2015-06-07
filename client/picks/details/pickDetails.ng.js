@@ -1,14 +1,14 @@
 angular.module("pick-a-tech").controller("PickDetailsCtrl",
     function ($scope, $stateParams, $meteor, $rootScope, $modal, $log) {
 
-        $scope.pick = $meteor.object(Picks, $stateParams.pickId);
-        $scope.comments = $meteor.collection(Comments);
+        $scope.pick = $scope.$meteorObject(Picks, $stateParams.pickId);
+        $scope.comments = $scope.$meteorCollection(Comments);
         $scope.labels = {};
         $scope.candidates = [];
-        $scope.allCandidates = $meteor.collection(Candidates);
+        $scope.allCandidates = $scope.$meteorCollection(Candidates);
         $scope.allCandidates.forEach(function (c) {
             if (c.pick_id === $scope.pick._id) {
-                var label = $meteor.object(Labels, c.label_id).subscribe('labels');
+                var label = $scope.$meteorObject(Labels, c.label_id).subscribe('labels');
                 $scope.labels[c.label_id] = label;
                 $scope.candidates.push(c);
             }

@@ -1,9 +1,9 @@
 angular.module("pick-a-tech").controller("UsersListCtrl", ['$scope', '$meteor',
     function ($scope, $meteor) {
 
-        $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
-        $scope.picks = $meteor.collection(Picks).subscribe('picks');
-        $scope.comments = $meteor.collection(Comments).subscribe('comments');
+        $scope.users = $scope.$meteorCollection(Meteor.users, false).subscribe('users');
+        $scope.picks = $scope.$meteorCollection(Picks).subscribe('picks');
+        $scope.comments = $scope.$meteorCollection(Comments).subscribe('comments');
 
         $scope.name = function (user) {
             return user.emails[0].address.substring(0, user.emails[0].address.indexOf('@'));

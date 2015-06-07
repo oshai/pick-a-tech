@@ -1,9 +1,9 @@
 angular.module("pick-a-tech").controller("NewPickCtrl",
     function ($scope, $stateParams, $meteor, $location, $rootScope, $q) {
 
-        $scope.picks = $meteor.collection(Picks).subscribe('picks');
-        $scope.labels = $meteor.collection(Labels).subscribe('labels');
-        $scope.candidates = $meteor.collection(Candidates).subscribe('candidates');
+        $scope.picks = $scope.$meteorCollection(Picks).subscribe('picks');
+        $scope.labels = $scope.$meteorCollection(Labels).subscribe('labels');
+        $scope.candidates = $scope.$meteorCollection(Candidates).subscribe('candidates');
         $scope.newPick = {};
         $scope.newCandidates = {};
         $scope.newCandidates.names = [];
