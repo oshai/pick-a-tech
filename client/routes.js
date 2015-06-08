@@ -1,9 +1,15 @@
-angular.module("pick-a-tech").run(["$rootScope", "$state",  function($rootScope, $state) {
-    $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+angular.module("pick-a-tech").run(["$rootScope", "$state", "$location", "$window", function ($rootScope, $state, $location, $window) {
+    $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
         if (error === "AUTH_REQUIRED") {
             Notifications.warn('Sign-In required!', 'Please sign in');
         }
     });
+    $rootScope.$on('$stateChangeSuccess',
+        function (event) {
+            if (!$window.ga)
+                return;
+            $window.ga('send', 'pageview', {page: $location.path()});
+        });
 }]);
 
 
@@ -55,7 +61,7 @@ angular.module("pick-a-tech").config(['$urlRouterProvider', '$stateProvider', '$
                         templateUrl: 'client/picks/new/new-pick.ng.html',
                         controller: 'NewPickCtrl',
                         resolve: {
-                            "currentUser": ["$meteor", function($meteor){
+                            "currentUser": ["$meteor", function ($meteor) {
                                 return $meteor.requireUser();
                             }]
                         }
